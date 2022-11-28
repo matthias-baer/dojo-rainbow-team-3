@@ -38,3 +38,21 @@ class Line:
 
     def add(self, ax):
         ax.plot((self.start_point[0], self.end_point[0]), (self.start_point[1], self.end_point[1]), **self.kwargs)
+
+
+class Label:
+    def __init__(self, label_name, position):
+        self.name = label_name
+        self.position = position
+
+    def add(self, ax):
+        ax.annotate(self.name, self.position)
+
+
+class Group:
+    def __init__(self, *shapes):
+        self.shapes = shapes
+
+    def add(self, ax):
+        for shape in self.shapes:
+            shape.add(ax)
