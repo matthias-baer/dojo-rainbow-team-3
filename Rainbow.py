@@ -19,16 +19,17 @@ class Drawing:
         self.ax.set_aspect("equal")
         self.ax.set_axis_off()
 
-    def add(self, *args):
-        for item in args:
-            item.plot(self.ax)
+    def add(self, *shapes):
+        for shape in shapes:
+            shape.add(self.ax)
+
 
 class Circle:
     def __init__(self, center, radius):
         self.center = center
         self.radius = radius
 
-    def plot(self, ax):
+    def add(self, ax):
         ax.add_patch(mpatch.Circle(self.center, radius=self.radius, fill=False))
 
 
